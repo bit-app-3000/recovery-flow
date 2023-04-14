@@ -1,0 +1,11 @@
+{
+  "name": "@svc/a",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "svc:A": "nodemon --config ../../nodemon.json"
+  },
+  "dependencies": {
+    "json-server": "*"
+  }
+}

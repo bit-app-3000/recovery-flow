@@ -1,0 +1,17 @@
+{
+  "verbose": false,
+  "quiet": true,
+  "restartable": "rs",
+  "watchInterval": 500,
+  "watch": ["packages/", "services/"],
+  "ext": "js",
+  "signal": "SIGHUP",
+  "delay": 10,
+  "execMap": {
+    "js": "node --throw-deprecation --trace-warnings --max-http-header-size 100000 --max-old-space-size=10000  -r dotenv/config . dotenv_config_path=../../.env"
+  },
+  "env": {
+    "NODE_ENV": "development",
+    "NODE_OPTS": []
+  }
+}

@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+
+  nats:
+    image: 'nats:alpine'
+    container_name: 'nats'
+    restart: 'always'
+
+    env_file:
+      - '../../.env'
+
+    networks:
+      - 'infra'
+
+    ports:
+      - '4222:4222'
+      - '8222:8222'
+      - '9222:9222'
+
+    volumes:
+      - './nats:/config'
+      - 'js_data:/data'
+
+    command: '-c ./config/nats.conf'
+
+networks:
+  infra:
+
+volumes:
+  js_data:

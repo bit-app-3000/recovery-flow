@@ -1,0 +1,30 @@
+{
+  "name": "recovery-flow",
+  "version": "1.0.0",
+  "description": "async flow with recovery",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^19.0.0",
+    "npm": "^9.0.0"
+  },
+  "workspaces": [
+    "./packages/*",
+    "./services/*"
+  ],
+  "devDependencies": {
+    "@types/node": "*",
+    "nodemon": "*",
+    "standard": "*",
+    "dotenv": "*"
+  },
+  "scripts": {
+    "test": "standard **/src/**/*.js",
+    "fix": "standard **/src/**/*.js --fix",
+    "svc:A": "start npm run svc:A -w @svc/a",
+    "svc:B": "start npm run svc:B -w @svc/b",
+    "svc:Client": "start npm run svc:Client -w @svc/client",
+    "svc:Monitor": "start npm run svc:Monitor -w @svc/monitor",
+    "app:flow": "start npm run svc:A -w @svc/a & start npm run svc:B -w @svc/b & start npm run svc:Monitor -w @svc/monitor & start npm run svc:Client -w @svc/client"
+  }
+}

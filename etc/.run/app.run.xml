@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="app" type="CompoundRunConfigurationType">
+    <toRun name="svc:A" type="js.build_tools.npm" />
+    <toRun name="svc:B" type="js.build_tools.npm" />
+    <toRun name="svc:Client" type="js.build_tools.npm" />
+    <toRun name="svc:Monitor" type="js.build_tools.npm" />
+    <method v="2" />
+  </configuration>
+</component>

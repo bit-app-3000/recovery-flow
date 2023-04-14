@@ -1,0 +1,8 @@
+{
+  "name": "@at/nats",
+  "type": "module",
+  "main": "src/index.js",
+  "dependencies": {
+    "nats": "*"
+  }
+}

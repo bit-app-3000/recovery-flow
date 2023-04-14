@@ -1,0 +1,5 @@
+{
+  "name": "@at/shutdown",
+  "type": "module",
+  "main": "src/index.js"
+}

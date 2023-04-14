@@ -1,0 +1,5 @@
+{
+  "name": "@at/signature",
+  "type": "module",
+  "main": "src/index.js"
+}

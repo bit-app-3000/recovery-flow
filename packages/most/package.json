@@ -1,0 +1,10 @@
+{
+  "name": "@at/most",
+  "type": "module",
+  "main": "src/index.js",
+  "dependencies": {
+    "@most/core": "*",
+    "@most/scheduler": "*",
+    "@most/adapter": "*"
+  }
+}

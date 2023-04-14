@@ -1,0 +1,10 @@
+### Post Command
+
+POST {{jsonApi}}/command
+Content-Type:  application/json
+
+{
+  "payload": "{{$uuid}}"
+}
+
+###

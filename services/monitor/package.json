@@ -1,0 +1,8 @@
+{
+  "name": "@svc/monitor",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "svc:Monitor": "nodemon --config ../../nodemon.json"
+  }
+}
