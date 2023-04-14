@@ -21,10 +21,10 @@
   "scripts": {
     "test": "standard **/src/**/*.js",
     "fix": "standard **/src/**/*.js --fix",
-    "svc:A": "start npm run svc:A -w @svc/a",
-    "svc:B": "start npm run svc:B -w @svc/b",
-    "svc:Client": "start npm run svc:Client -w @svc/client",
-    "svc:Monitor": "start npm run svc:Monitor -w @svc/monitor",
-    "app:flow": "start npm run svc:A -w @svc/a & start npm run svc:B -w @svc/b & start npm run svc:Monitor -w @svc/monitor & start npm run svc:Client -w @svc/client"
+    "clean": "npm run clean -w @at/control",
+    "command": "npm run command -w @at/control",
+    "loader": "npm run loader -w @at/control",
+    "inspect": "npm run inspect -w @at/control",
+    "app": "start npm run svc:A -w @svc/a & start npm run svc:B -w @svc/b"
   }
 }

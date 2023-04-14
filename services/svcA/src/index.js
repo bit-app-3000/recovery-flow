@@ -1,9 +1,16 @@
 import { SVC } from '@at/configs'
-import { compose } from '@at/utils'
-
-import { jsonServer } from './server.js'
-import { effects } from './fx.js'
+import { CommandController } from './controller.js'
+import { Effects } from './fx.js'
+import { Listener, Server, NotFound } from '@at/server'
 
 const svc = SVC.svcA
 
-compose(jsonServer, effects)(svc)
+async function Command (f) {
+  f.post('/command', {}, CommandController)
+}
+
+Server()
+  .register(Effects)
+  .register(NotFound)
+  .register(Command)
+  .listen(svc, Listener(svc))

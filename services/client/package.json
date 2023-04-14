@@ -1,8 +1,0 @@
-{
-  "name": "@svc/client",
-  "type": "module",
-  "main": "src/index.js",
-  "scripts": {
-    "svc:Client": "nodemon --config ../../nodemon.json"
-  }
-}

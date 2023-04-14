@@ -3,7 +3,14 @@ import { pullSubscribe, jc } from '@at/nats'
 import { DURABLE } from '@at/configs'
 import { composeAsync, ERR } from '@at/utils'
 
-export async function Pull ({ subject, handler, max = 1, expires = 1000, period = 100, down$ = empty() }) {
+export async function Pull ({
+  subject,
+  handler,
+  max = 10,
+  expires = 10,
+  period = 10,
+  down$ = empty()
+}) {
   let batch = max
   const callbackFn = async (e, m) => e ? failure(m)(e) : composeAsync(complete(m), handler, begin(m))()
   const subOpts = { mack: true, config: { durable_name: DURABLE[subject] }, callbackFn }

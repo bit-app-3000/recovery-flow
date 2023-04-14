@@ -5,21 +5,18 @@ import { SHUTDOWN_DELAY } from '@at/configs'
 let isShutdown
 const [down, down$] = createAdapter()
 
-process.once('SIGTERM', shutdown)
-process.once('SIGINT', shutdown)
+process.on('SIGTERM', shutdown)
+process.on('SIGINT', shutdown)
 
-process.once('uncaughtException', shutdown)
-process.once('unhandledRejection', shutdown)
+process.on('uncaughtException', shutdown)
+process.on('unhandledRejection', shutdown)
 
-async function shutdown (reason) {
+function shutdown (reason) {
   if (isShutdown) return
   isShutdown = true
-  down(reason)
-
+  down(null)
   WRN('Shutdown', reason)
-  await delay(Number(SHUTDOWN_DELAY))
-  WRN('Exit ...')
-  process.exit(0)
+  return delay(Number(SHUTDOWN_DELAY)).then(() => process.exit(0))
 }
 
 export function Shutdown () {

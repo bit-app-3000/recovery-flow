@@ -6,7 +6,7 @@ import { Pub, Pull } from '@at/sinks'
 import { ERR } from '@at/utils'
 import { Result } from './controller.js'
 
-const { down$ } = Shutdown()
+export const { down$ } = Shutdown()
 
 await Nats.init()
 export const [execute, execute$] = createAdapter()
@@ -18,9 +18,9 @@ await Pull({ subject: JS.RESULT, handler: result, down$ })
 
 const Execute = data => pub(JS.EXECUTE, data)
 
-export const effects = svc => {
+export const Effects = (f, opts, done) => {
   effect(tap(Execute, execute$)).catch(ERR)
   effect(tap(Result, result$)).catch(ERR)
 
-  return svc
+  done()
 }

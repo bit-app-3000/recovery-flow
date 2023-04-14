@@ -1,21 +1,25 @@
 import { nanoid } from 'nanoid'
-import { Store } from '@at/store'
+import { execute, down$ } from './fx.js'
 
-import { execute } from './fx.js'
+import { Stat } from '@at/sinks'
+
+const stat = await Stat({ name: 'svc:A', metric: ['execute', 'result', 'reply'], down$ })
 
 const Registry = new Map()
 
-export async function CommandController (req, res) {
+export const CommandController = (req, reply) => {
   const { payload } = req.body
   const taskId = nanoid()
-
-  Registry.set(taskId, res)
-  await Store.set({ taskId, payload })
-  execute({ taskId, command: 'isApproved' })
+  Registry.set(taskId, reply)
+  execute({ taskId, payload, command: 'create' })
+  stat('execute')
 }
 
 export const Result = ({ taskId, command, result }) => {
+  stat('result')
   switch (command) {
+    case 'create':
+      return execute({ taskId, command: 'isApproved' })
     case 'isApproved':
       return result
         ? execute({ taskId, command: 'sign' })
@@ -31,8 +35,12 @@ export const Result = ({ taskId, command, result }) => {
 
 export function Reply ({ taskId, result }) {
   if (!Registry.has(taskId)) return
-
-  const res = Registry.get(taskId)
+  const reply = Registry.get(taskId)
   Registry.delete(taskId)
-  res.json(result)
+
+  reply
+    .code(200)
+    .send(result)
+
+  stat('reply')
 }

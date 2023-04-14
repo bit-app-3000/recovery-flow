@@ -1,0 +1,8 @@
+{
+  "name": "@at/server",
+  "type": "module",
+  "main": "src/index.js",
+  "dependencies": {
+    "fastify": "*"
+  }
+}

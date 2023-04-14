@@ -1,18 +1,15 @@
 {
   "name": "@at/control",
   "type": "module",
-  "main": "src/index.js",
   "scripts": {
-    "init": "nodemon src/init.js",
-    "clean": "nodemon src/clean.js",
-    "emitter": "nodemon src/emmiter.js",
-    "probe": "nodemon src/probe.js",
-    "kill": "nodemon src/kill.js"
-  },
-  "exports": {
-    "./env": "./src/env.js"
+    "clean": "node src/clean.js",
+    "inspect": "node src/inspect.js",
+    "command": "node src/command.js",
+    "loader": "node src/loader.js"
   },
   "devDependencies": {
-    "nanoid": "*"
+    "nanoid": "*",
+    "autocannon": "*",
+    "superagent": "*"
   }
 }

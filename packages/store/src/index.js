@@ -1,6 +1,5 @@
 import { kvConnect, jc } from '@at/nats'
 import { KV_NAME, KV_OPTS } from '@at/configs'
-// import { LOG } from '@at/utils'
 
 const kv = await kvConnect(KV_NAME, KV_OPTS)
 
