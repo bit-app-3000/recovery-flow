@@ -12,7 +12,7 @@ await Nats.init()
 
 const pub = await Pub({ period: 1 })
 
-await Pull({ subject: JS.EXECUTE, max: 100, handler: Execute, down$ })
+await Pull({ subject: JS.EXECUTE, handler: Execute, down$ })
 
 async function Execute (data) {
   if (data) {
