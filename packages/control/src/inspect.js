@@ -42,5 +42,4 @@ await (async () => {
               periodic(0.1)
             ))))))
     .catch(ERR)
-
 })()

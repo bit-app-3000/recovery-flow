@@ -1,4 +1,4 @@
-import { composeAsync, delay as d, LOG } from '@at/utils'
+import { composeAsync, delay as d } from '@at/utils'
 import { Store } from '@at/store'
 import { randomInt } from 'node:crypto'
 import { Signature } from '@at/signature'
